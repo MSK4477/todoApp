@@ -44,7 +44,7 @@ let {completed} = item
   return (
     <main>
    
-      {!toggleEdit && (
+      {!toggleEdit &&item.todo &&(
         <section className="mb-7">
           <table className="flex justify-center items-center w-full border-collapse border  border-gray-300">
             <tbody>

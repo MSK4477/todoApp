@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { v4 } from "uuid";
 
-const local = localStorage.getItem("reduxState") ? JSON.parse(localStorage.getItem("reduxState")) : [];
-const initialState = local.todo;
+// const local = localStorage.getItem("reduxState") ? JSON.parse(localStorage.getItem("reduxState")) : [];
+const initialState =[{}]
 
 const todoSlice = createSlice({
   name: "todo",
@@ -10,7 +10,7 @@ const todoSlice = createSlice({
   reducers: {
     addTodo: (state, action) => {
       state.push({ id: v4(), completed: false, todo: action.payload });
-      console.log(local.todo)
+      // console.log(local.todo)
 
     },
 

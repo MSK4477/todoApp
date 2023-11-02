@@ -1,16 +1,16 @@
 import { configureStore } from "@reduxjs/toolkit";
 import todoSlice from "../Redux/slices/todoSlice";
-const storeToLocalStoreage = ({ getState }) => (next) => (action) => {
-    const result = next(action);
+// const storeToLocalStoreage = ({ getState }) => (next) => (action) => {
+//     const result = next(action);
   
-    try {
-      localStorage.setItem("reduxState", JSON.stringify(getState()));
-    } catch (error) {
-      console.error("Error saving Redux state to local storage:", error);
-    }
+//     try {
+//       localStorage.setItem("reduxState", JSON.stringify(getState()));
+//     } catch (error) {
+//       console.error("Error saving Redux state to local storage:", error);
+//     }
   
-    return result;
-  };
+//     return result;
+//   };
   
 const store  = configureStore ({
     reducer: {
@@ -18,7 +18,7 @@ const store  = configureStore ({
 
     },
 
-    middleware:( getDefaultMiddleware )=> getDefaultMiddleware().concat(storeToLocalStoreage)
+    // middleware:( getDefaultMiddleware )=> getDefaultMiddleware().concat(storeToLocalStoreage)
 
 })
 
