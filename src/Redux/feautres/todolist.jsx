@@ -29,9 +29,7 @@ const TodoList = ({ item }) => {
     console.log(dispatch(deleteTodo({ id })));
     toast.success("Todo Deleted Succesfully");
   };
-  // console.log("item status", item.completed)
 let {completed} = item
-// const [f, sf] = useState(false)
   const markAsCompleted = (id) =>  {
     console.log(dispatch(markAsComleted({id})))
     if(!completed) { 
@@ -52,9 +50,9 @@ let {completed} = item
               <td className="p-2">
                 <input className="cursor-pointer" checked={completed ? true : false} onClick={() => markAsCompleted(item.id)} onChange={(e) => console.log(e)} type="checkbox" />
               </td>
-              <td    title={completed ? "completed" : item.todo.length  > 27 ? item.todo : "" } className={`p-2 text-red-900 font-serif max-lg:w-[120rem] max-md:w-[100rem]  w-80  m-auto ${completed && "line-through"}`}>
-                {item.todo.substring(0, 8)}
-                {item.todo.length > 8 && "..."}
+              <td    title={completed ? "completed" : item.todo.length  > 13 ? item.todo : "" } className={`p-2 text-red-900 font-serif max-lg:w-[120rem] max-md:w-[100rem]  w-96  m-auto ${completed && "line-through"}`}>
+                {item.todo.substring(0, 13)}
+                {item.todo.length > 13 && "..."}
               </td>
               <td className="p-2">
                 {item.todo &&  !completed && (

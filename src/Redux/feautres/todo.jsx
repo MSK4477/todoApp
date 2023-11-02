@@ -7,12 +7,12 @@ import { v4 } from "uuid";
 const Todo = () => {
   const data = useSelector((state) => state.todo);
   const [todo, setTodo] = useState("");
-  console.log("fnnskjfnsk", data);
+  const [toogleAdd, setToogleAdd] = useState(false)
   const newdata = [...data, todo].reverse();
   newdata.splice(0, 1);
   console.log(newdata, "ndata");
   const dispatch = useDispatch();
-
+console.log("newData", newdata.length)
   const handleClick = (e) => {
     e.preventDefault();
     if (todo && todo.length >=3 )  {
@@ -47,11 +47,11 @@ const Todo = () => {
           {newdata.map((items) => (
             <TodoList item={items} key={v4()} />
           ))}
-           {!newdata.length && (
+           {newdata.length <= 1 && !toogleAdd && (
         <table className=" text-gray-900 font-serif m-auto blck font-bold">
           <tbody>
           <tr>
-            <td>You {"Don't"} Have Any Tasks Add One</td>
+            <td>You {"Don't"} Have Any Tasks <span className="cursor-pointer text-blue-800" onClick={() => setToogleAdd(!toogleAdd)}>Add</span> One</td>
           </tr>
           </tbody>
         </table>
@@ -59,7 +59,7 @@ const Todo = () => {
 
       {" "}
 
-      <div className="text-center w-full m-auto mb-0">
+     {toogleAdd && <div className="text-center w-full m-auto mb-0">
             <input
               className="p-2 mb-4 w-full outline-none"
               type="text"
@@ -74,7 +74,7 @@ const Todo = () => {
             >
               + Add
             </button>
-          </div>
+          </div>}
         </section>
 
        
