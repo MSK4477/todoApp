@@ -1,6 +1,6 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { addTodo } from "./todoSlice";
+import { addTodo } from "../slices/todoSlice";
 import { useDispatch, useSelector } from "react-redux";
 import TodoList from "./todolist";
 import { v4 } from "uuid";
@@ -28,7 +28,7 @@ const Todo = () => {
       toast.error("Too Short")
 
       setTimeout(() => {
-        toast.error("Add More")
+        toast.error("Add Some More ")
 
       }, 1000)
       return
@@ -37,10 +37,10 @@ const Todo = () => {
 
   return (
     <>
-      <main className={`flex justify-center items-center flex-col w-full ${newdata.length ==  0 ? "h-screen" : "h-max"}`}>
+      <main className={`flex justify-center items-center flex-col w-full ${newdata.length ==  0 ? "h-screen" : "h-max py-14"}`}>
 
         
-        <section className="bg-gray-100 relative w-1/2 max-md:w-3/4w-1/2 max-sm:w-5/6 max-lg:w-5/6 py-24 px-32   max-h-max">
+        <section className="bg-gray-100 relative w-1/2 max-md:w-3/4w-1/2 max-sm:w-5/6 max-lg:w-4/5 py-24 px-32   max-h-max">
         <h1 className="absolute top-[5%]  left-[45%] font-serif text-lg text-orange-600 border-b-2">
         Todo List</h1> 
               
@@ -59,10 +59,11 @@ const Todo = () => {
 
       {" "}
 
-      <div className="text-center absolute bottom-0 left-[30%]">
+      <div className="text-center w-full m-auto mb-0">
             <input
-              className="p-2 mb-4 max-sm:w-1/2 outline-none"
+              className="p-2 mb-4 w-full outline-none"
               type="text"
+              placeholder="Add New Todo"
               value={todo}
               required={true}
               onChange={(e) => setTodo(e.target.value)}

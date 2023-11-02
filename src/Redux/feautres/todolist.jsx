@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
-import { updateTodo, deleteTodo, markAsComleted } from "./todoSlice";
+import { updateTodo, deleteTodo, markAsComleted } from "../slices/todoSlice";
 import { useDispatch } from "react-redux";
 import toast from "react-hot-toast";
 
@@ -46,15 +46,15 @@ let {completed} = item
    
       {!toggleEdit && (
         <section className="mb-7">
-          <table className="w-full border-collapse border border-gray-300">
+          <table className="flex justify-center items-center w-full border-collapse border  border-gray-300">
             <tbody>
             <tr className="border-b bg-white shadow-2xl rounded-2xl border-gray-300">
               <td className="p-2">
-                <input checked={completed ? true : false} onClick={() => markAsCompleted(item.id)} onChange={(e) => console.log(e)} type="checkbox" />
+                <input className="cursor-pointer" checked={completed ? true : false} onClick={() => markAsCompleted(item.id)} onChange={(e) => console.log(e)} type="checkbox" />
               </td>
-              <td    title={completed ? "completed" : item.todo.length  > 27 ? item.todo : "" } className={`p-2 ${completed && "line-through"}`}>
-                {item.todo.substring(0, 27)}
-                {item.todo.length > 27 && "..."}
+              <td    title={completed ? "completed" : item.todo.length  > 27 ? item.todo : "" } className={`p-2 text-red-900 font-serif max-lg:w-[120rem] max-md:w-[100rem]  w-80  m-auto ${completed && "line-through"}`}>
+                {item.todo.substring(0, 8)}
+                {item.todo.length > 8 && "..."}
               </td>
               <td className="p-2">
                 {item.todo &&  !completed && (

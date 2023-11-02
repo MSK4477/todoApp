@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import todoSlice from "../Redux/feautres/todoSlice";
+import todoSlice from "../Redux/slices/todoSlice";
 const storeToLocalStoreage = ({getState}) => next => action => {
     const result = next(action)
     localStorage.setItem("reduxState", JSON.stringify(getState()))
